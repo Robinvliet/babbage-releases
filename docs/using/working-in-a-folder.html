@@ -135,6 +135,7 @@
         <li><a href="scheduled-tasks.html">Scheduled tasks</a></li>
         <li><a href="personas.html">Personas</a></li>
         <li><a href="skills.html">Skills</a></li>
+        <li><a href="python.html">Python</a></li>
         <li><a href="memory.html">Memory</a></li>
         <li><a href="shortcuts.html">Shortcuts</a></li>
       </ul>
@@ -173,7 +174,7 @@
 <p>You link one with <strong>Work in a folder</strong> in the bar under the input bar, or with <strong>Add folder</strong> in the menu next to it. What you get to see before you confirm is on <a href="sources.html#linked-folders">Sources</a>.</p>
 <p>With a folder linked, the tools <strong>View folder</strong>, <strong>Read file</strong>, <strong>Write file</strong>, <strong>Terminal</strong> and <strong>Script</strong> work in that folder. Without one they are not gone: they work in the conversation&#39;s own workspace instead, and your own files stay out of reach.</p>
 <p>You can link several folders at once. Every folder has a name, and in the action timeline you see per step <em>which</em> folder it happened in.</p>
-<p>On Windows the terminal needs <a href="https://git-scm.com/download/win">Git for Windows</a>: commands run in Git Bash, so the same shell syntax works on every platform. Without it the agent says so and falls back to the file tools.</p>
+<p>On Windows the terminal uses <a href="https://git-scm.com/download/win">Git for Windows</a>: commands run in Git Bash, so the same shell syntax works on every platform. Without it, Babbage offers to fetch a portable copy of it (57 MB, into your user folder, without administrator rights, and removable again from Settings), or you install Git for Windows yourself.</p>
 <h2 id="without-a-folder-the-workspace">Without a folder: the workspace</h2>
 <p>A conversation that is allowed to write gets a scratch folder of its own, inside the Babbage data folder under <code>data/scratch/</code>, one per conversation. Nothing is created up front: the folder appears the first time the agent writes a file or runs a command there. From that moment a chip <strong>Workspace</strong> sits in the bar under the input bar; click it to show the folder in the Finder or Explorer. The agent knows the path and is told to name the file when it leaves something there for you, such as a converted document or the output of a script.</p>
 <p>The workspace belongs to the conversation. Delete the conversation and the folder goes with it, including the snapshots the terminal made in it. A conversation you start from another one with <strong>Continue from here</strong> begins with an empty one.</p>

@@ -121,6 +121,7 @@
         <li><a href="using/scheduled-tasks.html">Scheduled tasks</a></li>
         <li><a href="using/personas.html">Personas</a></li>
         <li><a href="using/skills.html">Skills</a></li>
+        <li><a href="using/python.html">Python</a></li>
         <li><a href="using/memory.html">Memory</a></li>
         <li><a href="using/shortcuts.html">Shortcuts</a></li>
       </ul>
@@ -138,6 +139,7 @@
         <li><a href="data-and-backup.html" aria-current="page">Data and backup</a>
           <ul class="nav-koppen">
             <li><a href="#what-is-in-it">What is in it</a></li>
+            <li><a href="#the-runtime-folder">The runtime folder</a></li>
             <li><a href="#making-a-backup">Making a backup</a></li>
             <li><a href="#starting-fresh">Starting fresh</a></li>
             <li><a href="#the-embedding-model">The embedding model</a></li>
@@ -175,7 +177,7 @@
 </thead>
 <tbody><tr>
 <td><code>data/</code></td>
-<td>the database (<code>babbage.db</code>) with all your conversations, projects, sources and settings, the memory mirror (<code>memory.md</code>), the folder snapshots (<code>snapshots/</code>), the workspaces (<code>scratch/</code>, one folder per conversation, gone with the conversation) and the local embedding model that makes your documents searchable (<code>models/</code>)</td>
+<td>the database (<code>babbage.db</code>) with all your conversations, projects, sources and settings, the memory mirror (<code>memory.md</code>), the folder snapshots (<code>snapshots/</code>), the workspaces (<code>scratch/</code>, one folder per conversation, gone with the conversation), the local embedding model that makes your documents searchable (<code>models/</code>) and, if you installed it, Babbage&#39;s own Python (<code>runtime/</code>, see below)</td>
 </tr>
 <tr>
 <td><code>skills/</code></td>
@@ -187,6 +189,9 @@
 </tr>
 </tbody></table></div>
 <p>The database is a single file and the rest is ordinary markdown. There is no export step: what you see on disk <em>is</em> your data. Original files you added as a source (PDFs and images) live inside the database as well, so they travel with that one file.</p>
+<h2 id="the-runtime-folder">The runtime folder</h2>
+<p><code>data/runtime</code> holds <a href="using/python.html">Babbage&#39;s own Python</a>, once you install it. It is not your data but a tool: a backup can leave it out, and it does not move along either. Restore the data folder to another place and that copy of Python no longer starts; the section <strong>Python</strong> under Settings, Tools then shows the error, and installing it again from there repairs it.</p>
+<p>On Windows, Babbage&#39;s own copy of Git lives outside the data folder, in <code>%LOCALAPPDATA%\Babbage\runtime</code>.</p>
 <h2 id="making-a-backup">Making a backup</h2>
 <p>Copy the data folder while the app is not running. Restoring is putting the copy back. There is nothing more to it.</p>
 <p>Do it with the app closed. A database still being written to while you copy it can leave you with a half-finished file.</p>

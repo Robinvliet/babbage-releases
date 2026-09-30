@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personas - Babbage</title>
-    <meta name="description" content="Giving the agent a fixed role and tone, alone or in a group that answers together or separately." />
+    <title>Python - Babbage</title>
+    <meta name="description" content="Babbage's own Python, for skills and scripts that work with Word, Excel, PowerPoint and PDF files." />
     <meta name="color-scheme" content="light dark" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -119,18 +119,18 @@
         <li><a href="models.html">Models</a></li>
         <li><a href="mcp-servers.html">MCP servers</a></li>
         <li><a href="scheduled-tasks.html">Scheduled tasks</a></li>
-        <li><a href="personas.html" aria-current="page">Personas</a>
+        <li><a href="personas.html">Personas</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="python.html" aria-current="page">Python</a>
           <ul class="nav-koppen">
-            <li><a href="#making-one">Making one</a></li>
-            <li><a href="#switching-one-on-in-a-running-conversation">Switching one on in a running conversation</a></li>
-            <li><a href="#who-wins-in-a-conflict">Who wins in a conflict</a></li>
-            <li><a href="#persona-groups">Persona groups</a></li>
-            <li><a href="#deleting">Deleting</a></li>
-            <li><a href="#a-persona-is-an-instruction-not-a-source">A persona is an instruction, not a source</a></li>
+            <li><a href="#what-you-get">What you get</a></li>
+            <li><a href="#installing-it">Installing it</a></li>
+            <li><a href="#where-it-lives">Where it lives</a></li>
+            <li><a href="#in-the-terminal">In the terminal</a></li>
+            <li><a href="#with-the-sandbox">With the sandbox</a></li>
+            <li><a href="#removing-and-updating">Removing and updating</a></li>
           </ul>
         </li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="python.html">Python</a></li>
         <li><a href="memory.html">Memory</a></li>
         <li><a href="shortcuts.html">Shortcuts</a></li>
       </ul>
@@ -162,37 +162,24 @@
       <main class="vlak" id="inhoud">
         <article class="prose">
           <p class="kruimel"><a href="index.html">Working with Babbage</a></p>
-          <h1>Personas</h1>
-          <p>A persona is a name plus a system prompt: a description of how the agent behaves in this conversation. Switch one on and it <strong>replaces</strong> the standard instructions of Babbage; it does not come on top of them.</p>
-<p>They live behind <strong>Prompts</strong> in the sidebar, together with your saved prompts. That button takes you to the page <strong>Prompts</strong>, with three tabs: <strong>Prompts</strong>, <strong>Personas</strong> and <strong>Persona groups</strong>. The tab is in the address, so <code>/prompts?tab=personas</code> opens this one right away.</p>
-<h2 id="making-one">Making one</h2>
-<p>On the <strong>Personas</strong> tab you click <strong>New persona</strong>. You fill in two fields:</p>
-<ul>
-<li><strong>Name</strong>, for example &quot;Critical editor&quot;.</li>
-<li><strong>System prompt</strong>: &quot;Describe how this persona behaves…&quot;</li>
-</ul>
-<p>On the page every row starts a <strong>New chat</strong> with that persona on it. In the menu next to it are <strong>Edit</strong> and <strong>Delete</strong>.</p>
-<h2 id="switching-one-on-in-a-running-conversation">Switching one on in a running conversation</h2>
-<p>Click the <strong>+</strong> on the input bar and choose <strong>Insert prompt</strong>. That opens a window with the same three sections in a list on the left - deliberately no navigation, because you are in the middle of a conversation. Go to <strong>Personas</strong> there. What you get is a compact version: pick an existing persona from the dropdown or make one with <strong>New</strong>, and click <strong>Start persona</strong>. If you change the text of an existing persona, that change is saved as soon as you start it.</p>
-<p>An active persona appears as a chip in the bar under the input bar, next to the linked folders, with a cross to switch it off again.</p>
-<h2 id="who-wins-in-a-conflict">Who wins in a conflict</h2>
-<p>If you work in a project, your project instructions and your persona are both in the prompt. The order is: project first, then the conversation. The more specific layer comes later and therefore wins. See <a href="projects.html#instructions">Projects</a>.</p>
-<h2 id="persona-groups">Persona groups</h2>
-<p>A group is a list of personas you put on a conversation in one go. On the <strong>Persona groups</strong> tab you make one with <strong>New group</strong>: a name, and the members underneath. You add members with <strong>Add persona…</strong>, drag them by the handle to order them (the keyboard works too) and take them out again with the cross. A group without members cannot be saved.</p>
-<p>You <strong>pick the mode when starting</strong>, not when making it. Next to the start button is an arrow with two choices:</p>
-<ul>
-<li><strong>Joint answer</strong> - &quot;The personas give one answer together.&quot; The system prompts of the members are merged, in the order you set, into one instruction: combine those perspectives and speak with one voice. So you get one answer, just as usual.</li>
-<li><strong>Separate replies</strong> - &quot;Every persona replies on its own.&quot; Your question gets several answers underneath each other, each as its own card with the name of the persona above it and its own stop button while it writes.</li>
-</ul>
-<p>With separate replies every persona runs <strong>its own thread</strong>: it sees all your messages and its own earlier answers, but not those of the others. So they do not influence each other, and that is the point of the setting.</p>
-<p>The main button always starts in <strong>Joint answer</strong>; the arrow is there for the other choice.</p>
-<h2 id="deleting">Deleting</h2>
-<p>A persona can always be deleted, even when it is still switched on somewhere. The confirmation says what happens then: &quot;Active conversations with this persona fall back to the default system prompt.&quot; With a group the same applies, and it says that the personas themselves stay.</p>
-<h2 id="a-persona-is-an-instruction-not-a-source">A persona is an instruction, not a source</h2>
-<p>That difference counts in a project with <strong>Answer only from the sources</strong>. What you write in a persona is simply in the prompt, but it carries no source number and can therefore not be cited as a source. The promise is about where the answer comes <em>from</em>, not about how the agent writes. See <a href="projects.html#answer-only-from-the-sources">Projects</a>.</p>
+          <h1>Python</h1>
+          <p>Many skills run small Python scripts, among them the document skills for Word, Excel, PowerPoint and PDF files. The model does the same when you ask it to change a value in a spreadsheet: an <code>.xlsx</code> file is not text, so the way to edit one is a script with a spreadsheet library. Babbage can install its own Python for this, so you do not need one on your computer.</p>
+<h2 id="what-you-get">What you get</h2>
+<p>Python 3.13 with pip and five libraries: openpyxl (Excel), python-docx (Word), python-pptx (PowerPoint), pypdf (PDF) and pillow (images). Every version is fixed in this version of Babbage, every download is checked against a checksum that is fixed with it, and nothing is ever updated behind your back.</p>
+<h2 id="installing-it">Installing it</h2>
+<p>It is not part of the installer: you install it once, from <strong>Settings</strong>, <strong>Tools</strong>, in the section <strong>Python</strong>. A dialog says what will be downloaded and how much space it takes before anything happens: about 56 MB to download and about 156 MB on disk. The files come from their official sources (uv from its release page on GitHub, Python from the python-build-standalone project, the libraries from PyPI) and need no administrator rights. The section shows the progress while it runs.</p>
+<p>For now this is available on a Mac with Apple Silicon; Windows follows.</p>
+<h2 id="where-it-lives">Where it lives</h2>
+<p>In the data folder, under <code>data/runtime</code>. Only Babbage uses it: nothing is added to your own terminal, shell or system Python. It is not your data, so a backup can leave it out; see <a href="../data-and-backup.html#the-runtime-folder">Data and backup</a>.</p>
+<h2 id="in-the-terminal">In the terminal</h2>
+<p>Once it is installed, <code>python</code> and <code>python3</code> in Babbage&#39;s terminal and in scripts are this Python, even when your computer has another one. To use another Python, call it by its full path, for example <code>/usr/bin/python3</code>. The model is told whether Babbage&#39;s Python is installed, so it knows what it can use.</p>
+<h2 id="with-the-sandbox">With the sandbox</h2>
+<p>Inside the <a href="working-in-a-folder.html#be-honest-about-what-this-is">sandbox</a>, the Python folder can be read and run, but not changed. Installing an extra library with <code>pip install</code> is therefore refused there, and the card that appears then offers <strong>Run outside the sandbox</strong>: you decide, and afterwards you ask the agent to run the command again (see <a href="working-in-a-folder.html#when-a-command-needs-the-internet">When a command needs the internet</a>). With the sandbox switched off, pip installs directly. Inside the sandbox, an extra library can still go into the conversation&#39;s workspace: <code>pip install --target &lt;folder&gt;</code> and then <code>PYTHONPATH=&lt;folder&gt; python3 …</code>; it is gone with the conversation.</p>
+<h2 id="removing-and-updating">Removing and updating</h2>
+<p><strong>Remove</strong> in the same section deletes Babbage&#39;s Python; installing it again takes one click and downloads less, because uv stays. A newer version of Babbage may fix a newer Python or newer libraries. The section then says that the installed copy differs, and removing and installing again updates it.</p>
 
         </article>
-        <nav class="voetnav" aria-label="Previous and next page"><a class="vorige" href="scheduled-tasks.html"><span class="richting">Previous</span>Scheduled tasks</a><a class="volgende" href="skills.html"><span class="richting">Next</span>Skills</a></nav>
+        <nav class="voetnav" aria-label="Previous and next page"><a class="vorige" href="skills.html"><span class="richting">Previous</span>Skills</a><a class="volgende" href="memory.html"><span class="richting">Next</span>Memory</a></nav>
       </main>
     </div>
 
