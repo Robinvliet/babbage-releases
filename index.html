@@ -1379,8 +1379,8 @@
               runs commands in the terminal and executes scripts. You choose
               per conversation how strict approval is, from approving
               everything by hand to letting a helper model review every action
-              for you. Under every write there is a checkpoint, and under every
-              command a snapshot of the folder.
+              for you. Under every write there is a checkpoint, and before the
+              first far-reaching command of a turn a snapshot of the folder.
             </p>
           </div>
           <div class="tile-body">
@@ -1475,9 +1475,10 @@
             <h3>Tasks that keep running without you</h3>
             <p>
               Put an instruction on a schedule, once, on an interval or with
-              cron, and the agent runs it even if the app was closed. Missed
-              runs are caught up, and a task that keeps failing pauses itself
-              instead of quietly muddling on.
+              cron, and the agent runs it while Babbage is open. If the app was
+              closed, one missed run is caught up as soon as you open it again,
+              and a task that keeps failing pauses itself instead of quietly
+              muddling on.
             </p>
           </div>
           <div class="tile-body">
@@ -1532,7 +1533,7 @@
             <h3>Tools and MCP servers</h3>
             <p>
               Web search and fetching web pages are built in. Connect your
-              own MCP servers and turn them on or off per conversation.
+              own MCP servers; a server you switch on joins every conversation.
             </p>
           </div>
         </article>
@@ -1558,11 +1559,11 @@
         <dl class="band-facts">
           <div class="fact">
             <dt>Storage</dt>
-            <dd>Everything in one SQLite file, plus readable folders for skills and memory.</dd>
+            <dd>Everything in one SQLite file, plus a readable folder for skills and a readable file for memory.</dd>
           </div>
           <div class="fact">
             <dt>Backup</dt>
-            <dd>Copying that one file. That is all there is to it.</dd>
+            <dd>Copying the data folder, with the app closed. That is all there is to it.</dd>
           </div>
           <div class="fact">
             <dt>Keys</dt>
@@ -1570,7 +1571,7 @@
           </div>
           <div class="fact">
             <dt>Outbound traffic</dt>
-            <dd>Only what you switch on yourself: the model you picked, tools such as web search or an MCP server, and the check for new versions.</dd>
+            <dd>Only what you switch on yourself: the model you picked, tools such as web search or an MCP server, the check for new versions, and the downloads of the extras you install.</dd>
           </div>
         </dl>
       </div>
@@ -1696,8 +1697,9 @@
           <div class="qa-body"><div>
             <p>
               In one folder on your own disk: a SQLite file with your
-              conversations and settings, plus readable folders for your skills
-              and your memory. A backup is copying that folder.
+              conversations and settings, plus a readable folder for your
+              skills and a readable file for your memory. A backup is copying
+              that folder.
             </p>
             <p class="qa-meer">
               <a class="is-hidden" data-docs-link="data-and-backup.html">Where that folder is, per operating system</a>
