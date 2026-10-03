@@ -128,6 +128,7 @@
             <li><a href="#attaching-a-skill-to-a-message">Attaching a skill to a message</a></li>
             <li><a href="#who-may-invoke-a-skill">Who may invoke a skill</a></li>
             <li><a href="#what-the-model-does-with-your-skills">What the model does with your skills</a></li>
+            <li><a href="#when-a-skill-needs-python">When a skill needs Python</a></li>
             <li><a href="#skills-that-arise-by-themselves">Skills that arise by themselves</a></li>
             <li><a href="#editing-and-deleting">Editing and deleting</a></li>
             <li><a href="#when-a-skill-file-is-not-in-order">When a skill file is not in order</a></li>
@@ -205,6 +206,8 @@
 <p>That last part is why that one description line counts: it is the only thing the model can see whether a skill is relevant by.</p>
 <p>If you run a local model that does not support tools, that fetching cannot happen. An attached skill then goes along in full including its extra files, and the index stays away: the prompt never promises something that is not there.</p>
 <p>A skill attached to a message from long ago falls out of view when a long conversation is <a href="conversations.html#when-a-conversation-gets-long">condensed</a>: the summary keeps the gist, not the instruction. Attach it again if you still want it.</p>
+<h2 id="when-a-skill-needs-python">When a skill needs Python</h2>
+<p>If a skill comes with scripts, a grey line under it on the Skills page says what they need, for instance &quot;Needs Python&quot; or &quot;Needs Python and bash&quot;. Babbage reads that from the files in the skill&#39;s <code>scripts/</code> folder each time it shows the list, so it follows the folder as it is. For Python the line also says whether <a href="python.html">Babbage&#39;s own Python</a> is installed on this computer; if it is not, <strong>Install</strong> opens the same dialog as the section <strong>Python</strong> under <strong>Settings</strong>, <strong>Tools</strong>, and the line shows the progress. bash and Node are only named: the line does not check whether they are there. A skill you fetch <strong>From a URL…</strong> tells you the same before you install it, in a grey line under the files that come with it; it does not hold up the installation.</p>
 <h2 id="skills-that-arise-by-themselves">Skills that arise by themselves</h2>
 <p>Two things can propose a skill. With both, you approve, and until that moment nothing is stored.</p>
 <p><strong>The agent, during a conversation.</strong> Ask for it, or ask repeatedly for the same kind of help, and it can propose a skill. That proposal appears in the chat and waits for <strong>Approve</strong> or <strong>Reject</strong>. That happens through a tool called <strong>Propose skill</strong>; it is always available and every proposal waits for your approval, so there is nothing to switch off. A skill that came into being this way carries the label <strong>agent</strong> in the list; the ones you wrote yourself say <strong>own</strong>, the ones you fetched say <strong>hub</strong>.</p>
