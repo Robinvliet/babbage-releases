@@ -227,7 +227,7 @@ docker compose up -d --build
 <li>To keep the folder snapshots of linked folders, rename <code>omnissiah</code> to <code>babbage</code> in <code>data/snapshots/store/refs/</code> while that folder still contains files.</li>
 <li><code>docker compose up -d --build</code>, or <code>npm run build &amp;&amp; npm run start</code>. The container is now called <code>babbage</code>.</li>
 </ol>
-<p>If you skipped the session secret, the first login creates a new one, but the server only reads it at startup: restart once after that login, otherwise it keeps sending you back to the login page. The same holds for a brand-new install whose <code>.env</code> started without a secret.</p>
+<p>If you skipped the session secret, the server creates one at its first start and writes it to <code>.env</code>; no restart is needed.</p>
 
         </article>
         <nav class="voetnav" aria-label="Previous and next page"><a class="vorige" href="index.html"><span class="richting">Previous</span>Self-hosting</a><a class="volgende" href="configuration.html"><span class="richting">Next</span>Configuration</a></nav>
