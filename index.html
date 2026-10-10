@@ -7,6 +7,12 @@
   <meta name="description" content="Babbage is a local AI agent for macOS and Windows, packaged as a chat app. Cloud or local models, your own keys, and all your data in one folder on your own disk." />
   <meta name="theme-color" content="#091717" />
   <meta name="color-scheme" content="dark" />
+  <!-- Het logo als favicon (web-eenheid van het logo, 10-10-2026): de SVG
+       volgt het tabblad (zwart bij licht, wit bij donker) in Chrome en
+       Firefox; Safari negeert de kleurmodus in een SVG-favicon en neemt de
+       192-tegel. Beide komen uit npm run icons in de app-repo. -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Babbage" />
@@ -125,6 +131,10 @@
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
       --ease-dramatic: cubic-bezier(0.77, 0, 0.175, 1);
+      /* De veer van het indraaiende tandwiel in de hero: dezelfde curve als
+         het --ease-press-token van de app. --spring-bouncy is hiervoor te
+         snel; daarmee is de draai na 150 ms al voorbij. */
+      --ease-turn: cubic-bezier(0.3, 1.35, 0.5, 1);
 
       --dur-fast: 200ms;
       --dur-exit: 150ms;
@@ -272,7 +282,7 @@
       font-size: 1.05rem;
       letter-spacing: -0.015em;
     }
-    .nav-brand svg { width: 26px; height: 26px; transition: transform var(--dur-slow) var(--spring-bouncy); }
+    .nav-brand svg { width: 19px; height: 19px; transition: transform var(--dur-slow) var(--spring-bouncy); }
     .nav-brand:hover svg { transform: rotate(-6deg) scale(1.08); }
 
     .nav-links {
@@ -362,8 +372,8 @@
       padding: 7rem 0 4rem;
     }
 
-    /* --- Het merk als brandpunt: gloed, drift, en een lijn die zichzelf
-           tekent bij het laden. Dat is het enige theatrale moment op de
+    /* --- Het merk als brandpunt: gloed, drift, en een tandwiel dat bij het
+           laden op zijn plek draait. Dat is het enige theatrale moment op de
            pagina. --- */
     .mark {
       position: relative;
@@ -402,24 +412,29 @@
     @keyframes drift-x { from { transform: translateX(-5px); } to { transform: translateX(5px); } }
     @keyframes drift-y { from { transform: translateY(4px); } to { transform: translateY(-6px); } }
 
+    /* Het logo (web-eenheid van het logo, 10-10-2026) in inkt, met de teal
+       gloed eromheen. De viewBox heeft rondom 10 eenheden lucht, dus het logo
+       vult 32/52 van het vak: even hoog als de "B" die er stond.
+       Het tandwiel draait in: vanaf -60 graden, precies één arm, dus begin- en
+       eindsilhouet vallen samen, en kleiner, met --ease-turn, die even
+       doorschiet en dan op zijn plek valt. De opkomst loopt los via
+       enter-fade. Het draaipunt is het midden van het vak, en dat is het
+       midden van het logo. */
     .mark svg {
       display: block;
       width: 100%;
       height: 100%;
       overflow: visible;
+      color: var(--reading);
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 40%, transparent));
+      animation:
+        turn-in 1.1s var(--ease-turn) both,
+        enter-fade 0.5s var(--ease-out) both;
     }
-    /* pathLength="1" maakt de dasharray onafhankelijk van de echte
-       padlengte, dus de drie lijnen tekenen zich even snel. */
-    .mark svg path {
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      animation: draw 0.75s var(--ease-dramatic) forwards;
+    @keyframes turn-in {
+      from { transform: rotate(-60deg) scale(0.82); }
+      to   { transform: rotate(0deg) scale(1); }
     }
-    .mark svg path:nth-child(1) { animation-delay: 0.05s; }
-    .mark svg path:nth-child(2) { animation-delay: 0.15s; }
-    .mark svg path:nth-child(3) { animation-delay: 0.34s; }
-    @keyframes draw { to { stroke-dashoffset: 0; } }
 
     /* --- Versiepil --- */
     .version {
@@ -1189,7 +1204,7 @@
       .step.wait::after {
         animation: none !important;
       }
-      .mark svg path { stroke-dashoffset: 0; animation: none; }
+      .mark svg { animation: none; }
       .mark-halo { opacity: 0.85; }
       .cursor-glow { display: none; }
       .nav,
@@ -1236,12 +1251,8 @@
 
   <nav class="nav">
     <a class="nav-brand" href="#top">
-      <svg viewBox="0 0 512 512" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M184 140 L184 372" />
-          <path d="M184 140 L262 140 A58 58 0 0 1 262 256 L184 256" />
-          <path d="M184 256 L270 256 A58 58 0 0 1 270 372 L184 372" />
-        </g>
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M-0.000976453 14.7655C-0.000976432 14.2908 0.16968 13.8931 0.510992 13.5725C0.85112 13.2508 1.27302 13.09 1.77669 13.09H2.13435C5.83232 13.09 8.10375 9.0414 6.17643 5.88538C5.9394 5.49443 5.88015 5.06886 5.99866 4.60866C6.11717 4.14734 6.39864 3.80498 6.84305 3.58158L9.15402 2.32496C9.56881 2.10156 10.0132 2.04571 10.4873 2.15741C10.9613 2.26911 11.3169 2.5344 11.5539 2.95327L15.998 10.1579L20.3978 2.99516C20.6348 2.57629 20.998 2.311 21.4875 2.1993C21.9758 2.0876 22.4273 2.14345 22.8421 2.36685L25.153 3.62347C25.5678 3.84687 25.8345 4.18197 25.953 4.62876C26.0715 5.07556 26.0123 5.5084 25.7752 5.92727L21.3755 13.09H30.2194C30.7231 13.09 31.1456 13.2508 31.4869 13.5725C31.827 13.8931 31.9971 14.2908 31.9971 14.7655V17.2787C31.9971 17.7535 31.827 18.1517 31.4869 18.4734C31.1456 18.7939 30.7231 18.9542 30.2194 18.9542L21.3755 18.9542L25.7752 26.1588C26.0419 26.5498 26.1088 26.9754 25.9761 27.4356C25.8422 27.8969 25.553 28.2392 25.1086 28.4626L22.8421 29.6774C22.4273 29.9008 21.9758 29.9499 21.4875 29.8248C20.998 29.6986 20.6348 29.44 20.3978 29.0491C18.3774 25.76 13.589 25.7691 11.5539 29.0491C11.2872 29.4679 10.9169 29.7332 10.4428 29.8449C9.96878 29.9566 9.52437 29.9008 9.10958 29.6774L6.79861 28.4208C6.38382 28.1974 6.11717 27.8556 5.99866 27.3954C5.88015 26.934 5.9394 26.5079 6.17643 26.117C8.10075 22.9842 5.84667 18.9542 2.17007 18.9542H1.77669C1.27302 18.9542 0.851119 18.7939 0.510992 18.4734C0.16968 18.1517 -0.000976583 17.7535 -0.000976562 17.2787L-0.000976453 14.7655Z" />
       </svg>
       Babbage
     </a>
@@ -1264,12 +1275,8 @@
         <div class="mark-halo" aria-hidden="true"></div>
         <div class="mark-drift-x">
           <div class="mark-drift-y">
-            <svg viewBox="0 0 512 512" role="img" aria-label="Babbage">
-              <g fill="none" stroke="#fbfaf4" stroke-width="44" stroke-linecap="round" stroke-linejoin="round">
-                <path pathLength="1" d="M184 140 L184 372" />
-                <path pathLength="1" d="M184 140 L262 140 A58 58 0 0 1 262 256 L184 256" />
-                <path pathLength="1" d="M184 256 L270 256 A58 58 0 0 1 270 372 L184 372" />
-              </g>
+            <svg viewBox="-10 -10 52 52" role="img" aria-label="Babbage">
+              <path fill="currentColor" d="M-0.000976453 14.7655C-0.000976432 14.2908 0.16968 13.8931 0.510992 13.5725C0.85112 13.2508 1.27302 13.09 1.77669 13.09H2.13435C5.83232 13.09 8.10375 9.0414 6.17643 5.88538C5.9394 5.49443 5.88015 5.06886 5.99866 4.60866C6.11717 4.14734 6.39864 3.80498 6.84305 3.58158L9.15402 2.32496C9.56881 2.10156 10.0132 2.04571 10.4873 2.15741C10.9613 2.26911 11.3169 2.5344 11.5539 2.95327L15.998 10.1579L20.3978 2.99516C20.6348 2.57629 20.998 2.311 21.4875 2.1993C21.9758 2.0876 22.4273 2.14345 22.8421 2.36685L25.153 3.62347C25.5678 3.84687 25.8345 4.18197 25.953 4.62876C26.0715 5.07556 26.0123 5.5084 25.7752 5.92727L21.3755 13.09H30.2194C30.7231 13.09 31.1456 13.2508 31.4869 13.5725C31.827 13.8931 31.9971 14.2908 31.9971 14.7655V17.2787C31.9971 17.7535 31.827 18.1517 31.4869 18.4734C31.1456 18.7939 30.7231 18.9542 30.2194 18.9542L21.3755 18.9542L25.7752 26.1588C26.0419 26.5498 26.1088 26.9754 25.9761 27.4356C25.8422 27.8969 25.553 28.2392 25.1086 28.4626L22.8421 29.6774C22.4273 29.9008 21.9758 29.9499 21.4875 29.8248C20.998 29.6986 20.6348 29.44 20.3978 29.0491C18.3774 25.76 13.589 25.7691 11.5539 29.0491C11.2872 29.4679 10.9169 29.7332 10.4428 29.8449C9.96878 29.9566 9.52437 29.9008 9.10958 29.6774L6.79861 28.4208C6.38382 28.1974 6.11717 27.8556 5.99866 27.3954C5.88015 26.934 5.9394 26.5079 6.17643 26.117C8.10075 22.9842 5.84667 18.9542 2.17007 18.9542H1.77669C1.27302 18.9542 0.851119 18.7939 0.510992 18.4734C0.16968 18.1517 -0.000976583 17.7535 -0.000976562 17.2787L-0.000976453 14.7655Z" />
             </svg>
           </div>
         </div>
