@@ -317,10 +317,12 @@ body {
   text-decoration: none;
   letter-spacing: -0.01em;
 }
+/* Het logo in inkt, zoals in de app (web-eenheid van het logo, 10-10-2026);
+   het erft de --foreground van .merk. Het logo vult zijn vak, dus kleiner dan
+   de "B" die er stond. */
 .merk svg {
-  width: 1.35rem;
-  height: 1.35rem;
-  color: var(--primary);
+  width: 1.15rem;
+  height: 1.15rem;
 }
 .merk-sectie {
   color: var(--muted-foreground);
