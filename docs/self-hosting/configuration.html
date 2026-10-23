@@ -183,6 +183,16 @@
 <td>Secret for signing your login session. Leave it empty: Babbage generates one and stores it here.</td>
 </tr>
 <tr>
+<td><code>BABBAGE_SETUP_TOKEN</code></td>
+<td>set by Babbage</td>
+<td>One-time token for setting the first password. Babbage writes it while there is no password and removes it once there is one.</td>
+</tr>
+<tr>
+<td><code>BABBAGE_ALLOWED_HOSTS</code></td>
+<td>empty</td>
+<td>Extra addresses the web version may be opened on, comma-separated, such as your Tailscale address. <code>localhost</code> and <code>127.0.0.1</code> always work.</td>
+</tr>
+<tr>
 <td><code>GOOGLE_GENERATIVE_AI_API_KEY</code></td>
 <td>empty</td>
 <td>Google Gemini key.</td>

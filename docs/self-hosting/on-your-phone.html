@@ -170,6 +170,8 @@
 </code></pre>
 <p>If you use a different <code>APP_PORT</code>, fill in that port. Tailscale arranges a valid TLS certificate automatically. <code>tailscale serve status</code> shows you the address, something like <code>https://&lt;computername&gt;.&lt;tailnet&gt;.ts.net</code>.</p>
 </li>
+<li><p><strong>Tell Babbage that address</strong>: put <code>BABBAGE_ALLOWED_HOSTS=&lt;computername&gt;.&lt;tailnet&gt;.ts.net</code> in <code>.env</code> and restart, with Docker <code>docker compose up -d</code>; without it Babbage refuses the address (see <a href="../troubleshooting.html#this-address-is-not-allowed">Troubleshooting</a>).</p>
+</li>
 </ol>
 <blockquote>
 <p><code>tailscale serve</code> keeps everything inside your tailnet. Do <strong>not</strong> use <code>tailscale funnel</code>: that puts your app on the public internet.</p>

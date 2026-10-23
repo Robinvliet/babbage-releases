@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>First steps - Babbage</title>
-    <meta name="description" content="Add a model, pick the right one and have your first conversation." />
+    <meta name="description" content="The first start, a model, and your first conversation." />
     <meta name="color-scheme" content="light dark" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -103,7 +103,9 @@
         <li><a href="first-steps.html" aria-current="page">First steps</a>
           <ul class="nav-koppen">
             <li><a href="#the-interface-is-in-english">The interface is in English</a></li>
-            <li><a href="#adding-a-model">Adding a model</a></li>
+            <li><a href="#the-first-start">The first start</a></li>
+            <li><a href="#a-model-on-your-own-computer">A model on your own computer</a></li>
+            <li><a href="#adding-or-changing-a-model-later">Adding or changing a model later</a></li>
             <li><a href="#your-first-conversation">Your first conversation</a></li>
             <li><a href="#how-deeply-the-model-thinks">How deeply the model thinks</a></li>
             <li><a href="#what-you-can-turn-on-later">What you can turn on later</a></li>
@@ -158,10 +160,34 @@
         <article class="prose">
           <p class="kruimel"><a href="index.html">Getting started</a></p>
           <h1>First steps</h1>
-          <p>Babbage arrives empty. There is no model inside the app: you connect your own key from a cloud provider, or you run a model on your own machine. As long as there is neither, the app shows &quot;No model available yet&quot; instead of an input bar that cannot do anything.</p>
+          <p>Babbage arrives empty. There is no model inside the app: you connect your own key from a cloud provider, or a model you run yourself. The first time you open Babbage, a short setup takes care of that before anything else.</p>
 <h2 id="the-interface-is-in-english">The interface is in English</h2>
 <p>Babbage&#39;s interface is in English. The language the model answers in follows the language <em>you</em> write in: write Dutch and you get a Dutch answer. And jargon stays in the language it works in, so a tool keeps the name it has in every other tool.</p>
-<h2 id="adding-a-model">Adding a model</h2>
+<h2 id="the-first-start">The first start</h2>
+<p>The first time Babbage opens, you do not see the app yet but a setup of four short steps. The agent introduces itself first, &quot;Hello. My name is Babbage.&quot;, and you can keep that name or give it another one. Then it asks what to call you. Both names can be changed later: the agent&#39;s under <strong>Agent settings</strong>, yours in <strong>Settings</strong>.</p>
+<p>The third step is the model: &quot;Before we can talk, I need a model to think with.&quot; There are three ways.</p>
+<ul>
+<li><strong>Use an API key.</strong> Pick Google or Anthropic, follow the link to the page where you create a key, paste it and click <strong>Check and save</strong>. Babbage checks the key with the provider once and then stores it in its own <code>.env</code> file on your computer. It never shows the key again and never puts it in a conversation. If the provider rejects the key, the reason appears under the field.</li>
+<li><strong>Run a model on this computer.</strong> Free and private, but slower, and it needs a model server: Ollama or LM Studio. See <a href="#a-model-on-your-own-computer">A model on your own computer</a> below.</li>
+<li><strong>Connect something else.</strong> <strong>Open Settings</strong> takes you to <strong>Models</strong>, where you connect your own endpoint or a local server you already run, as described below. When you come back with a model, the setup continues where it was.</li>
+</ul>
+<p>There is no way to skip this: without a model, Babbage cannot answer anything. Once there is one, the agent thanks you by name, and <strong>Start</strong> opens the app on an empty conversation.</p>
+<p>If the model disappears later, because you removed the key for instance, a new conversation shows &quot;No model available yet&quot; with <strong>Set up a model…</strong>, which opens the same setup at the model step.</p>
+<h2 id="a-model-on-your-own-computer">A model on your own computer</h2>
+<p>Babbage installs nothing by itself: the model runs in a separate app that you install once. With <strong>Run a model on this computer</strong>, Babbage first looks for Ollama or LM Studio on your computer.</p>
+<ul>
+<li><strong>Nothing found.</strong> You see &quot;I didn&#39;t find a model server yet.&quot; with a link to each: <strong>Get Ollama</strong> (recommended: free, and it runs in the background) and <strong>Get LM Studio</strong> (an app with its own model browser). Install one, start it, and click <strong>I&#39;ve installed it, check again</strong>. In LM Studio, also switch on its local server.</li>
+<li><strong>Found.</strong> &quot;Found Ollama on this computer.&quot; with <strong>Connect</strong>. One click and Babbage is linked; no key is needed for a server on your own computer.</li>
+</ul>
+<p>Then you pick the model to think with. A model that can&#39;t use tools is greyed out, because Babbage can&#39;t work with your files through it. If your server has no models yet, you get a short list of models that fit this computer, chosen by its memory, with a <strong>Download</strong> button each. A first download is a few gigabytes and takes a few minutes; you can follow the progress on screen. More models are in <strong>Discover models</strong> under Settings → Models.</p>
+<p><strong>One more setting.</strong> After you pick a model, Babbage loads it once to see how much context it gets. Ollama gives a model 4k tokens by default (more on a computer with a big graphics card), and Babbage needs at least 16k to work with files and tools. If it is less, the setup says what to change:</p>
+<ul>
+<li><strong>The Ollama app:</strong> go to Settings and set Context length to 16k or more.</li>
+<li><strong>Ollama without the app:</strong> start it with <code>OLLAMA_CONTEXT_LENGTH=16384</code>.</li>
+<li><strong>LM Studio:</strong> open the model&#39;s settings, set the context length to 16k or more, and load it again.</li>
+</ul>
+<p>Then click <strong>Check again</strong>. You can also go on with <strong>Skip for now</strong>; the conversation tells you later if the window is too small.</p>
+<h2 id="adding-or-changing-a-model-later">Adding or changing a model later</h2>
 <p>Click <strong>Settings</strong> at the bottom left of the sidebar and go to <strong>Models</strong>. There are three ways in.</p>
 <p><strong>Cloud provider.</strong> Under &quot;Add an API (cloud) model&quot;, pick Google or Anthropic, paste your API key and click <strong>Add</strong>. Babbage checks the key with the provider right away, so you know immediately whether it works. You only need one; two is fine too, and then you can switch per conversation. Keys stay server-side and never reach the browser.</p>
 <p><strong>Local model.</strong> If a local server is already running on your machine, Babbage usually finds it by itself and you see &quot;Ollama found at …&quot; with a <strong>Connect</strong> button. If you have nothing yet, click <strong>Discover models</strong>: that searches the models on Hugging Face and downloads one straight to your local server. Free, private and without a key. There is more about this on <a href="../using/models.html">Models</a>.</p>

@@ -206,9 +206,10 @@ npm run start
 </code></pre>
 <p>Then open <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 <h2 id="the-first-time">The first time</h2>
-<p>On your first visit the web version asks you to <strong>set a password</strong>, at least eight characters. After that you log in with it.</p>
+<p>On your first visit the web version asks you to <strong>set a password</strong>, at least eight characters. After that you log in with it. Right after the first login comes the same setup as in the desktop app, see <a href="../getting-started/first-steps.html#the-first-start">First steps</a>.</p>
+<p>That first screen also asks for the <strong>Setup token</strong>, so that only someone who can open the files on this computer sets the password. Babbage makes the token when it starts without a password and writes it to <code>.env</code> as <code>BABBAGE_SETUP_TOKEN</code>: with Docker the <code>.env</code> next to <code>docker-compose.yml</code>, without Docker the <code>.env</code> in the project folder. The server log says so in one line, without the token itself. Copy the value after the <code>=</code> into the field. Once the password is set, Babbage removes the token from <code>.env</code>.</p>
 <p>That password exists because the web version can be reached by several devices through Tailscale, unlike the desktop app which only exists on your own machine. The port itself is reachable only from that machine by default (<code>127.0.0.1</code>).</p>
-<p>Settings you may want to change, such as the port or where your data lives, are on <a href="configuration.html">Configuration</a>.</p>
+<p>Settings you may want to change, such as the port or where your data lives, are on <a href="configuration.html">Configuration</a>. Open the web version on another address than <code>localhost</code> or <code>127.0.0.1</code>, such as your Tailscale address, and you add that address there first (<code>BABBAGE_ALLOWED_HOSTS</code>).</p>
 <h2 id="updating">Updating</h2>
 <pre><code class="language-bash">git pull
 docker compose up -d --build
