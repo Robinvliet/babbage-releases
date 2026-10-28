@@ -106,6 +106,8 @@
   --motion-duration-slow: 480ms;
   --motion-stagger-step: 150ms;
   --motion-shimmer-duration: 6s;
+  --motion-avatar-cycle: 3s;
+  --motion-avatar-blink: 12s;
   --update-surface: oklch(from var(--accent-seed-light) 0.52 min(c, 0.11) h);
   --update-glow: radial-gradient(120% 120% at 100% 0%, oklch(from var(--accent-seed-light) 0.72 min(c, 0.12) h / 0.55) 0%, transparent 62%);
   --update-foreground: oklch(from var(--accent-seed) 0.98 min(c, 0.015) h);
